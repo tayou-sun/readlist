@@ -1,24 +1,30 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { ArticleItem } from '../components/ArticleItem';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { Article } from '../models/Article';
+import { articleList } from '../mocks/ArtcleList'
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+    <ScrollView style={styles.container} >
+      {articleList.map((article: Article) => <ArticleItem item={article}></ArticleItem>)}
+      {/*     <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-    </View>
+      <EditScreenInfo path="/screens/TabOneScreen.tsx" /> */}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#eee'
+
+    /* alignItems: 'center',
+    justifyContent: 'center', */
   },
   title: {
     fontSize: 20,

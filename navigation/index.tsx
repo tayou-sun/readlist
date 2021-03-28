@@ -2,8 +2,10 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
+import AddArticleScreen from '../screens/AddArticleScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
+import TabThreeScreen from '../screens/TabThreeScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -14,7 +16,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={DefaultTheme}/* {colorScheme === 'dark' ? DarkTheme : DefaultTheme} */>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -29,6 +31,7 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="AddArticle" component={AddArticleScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
 }
